@@ -15,7 +15,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>taskmanager</finalName>
-  </build>
 </project>
