@@ -9,19 +9,23 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-public class HttpManager {
+public class HttpManager
+{
     private String url;
     private String requestBody;
-    
-    public HttpManager(String url, String requestBody) {
+
+    public HttpManager(String url, String requestBody)
+    {
         this.url = url;
         this.requestBody = requestBody;
     }
-    public String makeRequest() throws Exception {
+
+    public String makeRequest() throws Exception
+    {
         String responseString = null;
-        HttpUriRequest request = null; 
-                
-        if(requestBody == null)
+        HttpUriRequest request = null;
+
+        if (requestBody == null)
         {
             byte[] bytes = requestBody.getBytes("UTF-8");
             ByteArrayEntity input = new ByteArrayEntity(bytes);
@@ -34,11 +38,11 @@ public class HttpManager {
         {
             request = new HttpGet(url);
         }
-        
+
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse httpResponse = client.execute(request);
         responseString = EntityUtils.toString(httpResponse.getEntity());
-                
+
         return responseString;
     }
 }
